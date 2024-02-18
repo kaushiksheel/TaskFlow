@@ -1,13 +1,25 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Nunito } from "next/font/google";
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const nunito = Nunito({
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
-  title: "TaskFlow",
+  title: {
+    default: "TaskFlow",
+    template: `%s | TaskFlow`,
+  },
   description:
     "TaskFlow is your go-to task management platform, meticulously crafted to elevate your productivity and streamline your projects effortlessly. Inspired by industry-leading tools like Trello, BoardWorks offers a seamless and intuitive interface tailored to suit the needs of individuals, teams, and organizations of all sizes.",
+  icons: [
+    {
+      url: "/logo.svg",
+      href: "/logo.svg",
+    },
+  ],
   openGraph: {
     title: "TaskFlow",
     description:
@@ -22,7 +34,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={nunito.className}>{children}</body>
     </html>
   );
 }
